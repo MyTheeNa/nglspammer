@@ -6,25 +6,34 @@ A high-performance asynchronous NGL message spammer with a beautiful minimal UI.
 
 ```mermaid
 graph TD
-    subgraph Performance
-    A[Start] --> B[Initialize]
-    B --> C[Send Messages]
-    C --> D[Rate Limiting]
-    D --> E[Success/Fail]
-    E --> C
-    end
+    style A fill:#2ecc71,stroke:#27ae60,stroke-width:2px
+    style B fill:#3498db,stroke:#2980b9,stroke-width:2px
+    style C fill:#9b59b6,stroke:#8e44ad,stroke-width:2px
+    style D fill:#e74c3c,stroke:#c0392b,stroke-width:2px
+    style E fill:#f1c40f,stroke:#f39c12,stroke-width:2px
+    
+    A(["🚀 Start"]) --> B(["⚙️ Initialize"])
+    B --> C(["📨 Send Messages"])
+    C --> D(["🔄 Rate Limiting"])
+    D --> E(["✅ Success/❌ Fail"])
+    E -->|"Loop"| C
 ```
 
 ## 📈 Message Throughput
 
 ```mermaid
 %%{init: {'theme': 'dark'}}%%
-xychart-beta
-    title "Messages per Second"
-    x-axis [10, 50, 100, 500, 1000]
-    y-axis "Messages/s" 0 --> 50
-    line [45, 42, 40, 38, 35]
-    style line stroke:cyan,stroke-width:2
+graph LR
+    style A fill:#2ecc71,stroke:#27ae60,stroke-width:2px
+    style B fill:#3498db,stroke:#2980b9,stroke-width:2px
+    style C fill:#9b59b6,stroke:#8e44ad,stroke-width:2px
+    style D fill:#e74c3c,stroke:#c0392b,stroke-width:2px
+    style E fill:#f1c40f,stroke:#f39c12,stroke-width:2px
+
+    A["10 msgs: 45/s"] --> B["50 msgs: 42/s"]
+    B --> C["100 msgs: 40/s"]
+    C --> D["500 msgs: 38/s"]
+    D --> E["1000 msgs: 35/s"]
 ```
 
 ## ✨ Features
@@ -35,34 +44,37 @@ xychart-beta
 - 🎨 **Minimal UI**: Clean design with real-time progress
 - 🔒 **Advanced Bypass**: Dynamic device ID and header generation
 
-## 📊 Performance Stats
+## 📊 Success Rate Analysis
 
 ```mermaid
 %%{init: {'theme': 'dark'}}%%
 pie
     title "Message Delivery Analysis"
-    "Success" : 95
-    "Failed" : 3
-    "Rate Limited" : 2
+    "✅ Success (95%)" : 95
+    "❌ Failed (3%)" : 3
+    "⏳ Rate Limited (2%)" : 2
 ```
 
-## 🔥 Concurrency Impact
+## 🔥 System Architecture
 
 ```mermaid
 %%{init: {'theme': 'dark'}}%%
-gantt
-    title Concurrent Request Performance
-    dateFormat X
-    axisFormat %s
-    
-    section 50 Requests
-    42 msg/s: 0, 42
-    section 100 Requests
-    40 msg/s: 0, 40
-    section 500 Requests
-    38 msg/s: 0, 38
-    section 1000 Requests
-    35 msg/s: 0, 35
+flowchart LR
+    style A fill:#2ecc71,stroke:#27ae60,stroke-width:2px
+    style B fill:#3498db,stroke:#2980b9,stroke-width:2px
+    style C fill:#9b59b6,stroke:#8e44ad,stroke-width:2px
+    style D fill:#e74c3c,stroke:#c0392b,stroke-width:2px
+    style E fill:#f1c40f,stroke:#f39c12,stroke-width:2px
+    style F fill:#1abc9c,stroke:#16a085,stroke-width:2px
+    style G fill:#e67e22,stroke:#d35400,stroke-width:2px
+
+    A[("📱 User Input")] --> B["⚡ Async Engine"]
+    B --> C{"🔄 Rate Limiter"}
+    C -->|"✅ Pass"| D["📨 Message Sender"]
+    C -->|"⏳ Limit"| E["🔄 Retry Handler"]
+    E --> B
+    D --> F["✅ Success"]
+    D --> G["❌ Fail"]
 ```
 
 ## 🛠️ Installation
@@ -112,35 +124,22 @@ Mission Complete
 
 ## ⚡ Performance Tips
 
-- Optimal concurrency: 50-100 requests
-- Recommended message count: <1000 per session
-- Stable internet connection required
-- Use proxies for better success rate
+- 🎯 Optimal concurrency: 50-100 requests
+- 📊 Recommended message count: <1000 per session
+- 🌐 Stable internet connection required
+- 🔒 Use proxies for better success rate
 
 ## ⚠️ Disclaimer
 
 This tool is for educational purposes only. Use responsibly and in accordance with NGL's terms of service.
 
-## 🔧 Technical Architecture
-
-```mermaid
-flowchart LR
-    A[User Input] --> B[Async Engine]
-    B --> C{Rate Limiter}
-    C -->|Pass| D[Message Sender]
-    C -->|Limit| E[Retry Handler]
-    E --> B
-    D --> F[Success]
-    D --> G[Fail]
-```
-
 ## 🤝 Contributing
 
 Feel free to:
-- Open issues
-- Submit PRs
-- Suggest improvements
-- Report bugs
+- 🐛 Open issues
+- 🔀 Submit PRs
+- 💡 Suggest improvements
+- 📝 Report bugs
 
 ## 📜 License
 
