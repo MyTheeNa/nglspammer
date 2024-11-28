@@ -2,7 +2,30 @@
 
 A high-performance asynchronous NGL message spammer with a beautiful minimal UI.
 
-![Performance Graph](https://quickchart.io/chart?c={type:'line',data:{labels:['10','50','100','500','1000'],datasets:[{label:'Messages/Second',data:[45,42,40,38,35],fill:false,borderColor:'rgb(75,192,192)'}]},options:{title:{display:true,text:'Performance Scaling'},scales:{yAxes:[{scaleLabel:{display:true,labelString:'Messages/Second'}}],xAxes:[{scaleLabel:{display:true,labelString:'Number of Messages'}}]}}})
+## 📊 Performance Analysis
+
+```mermaid
+graph TD
+    subgraph Performance
+    A[Start] --> B[Initialize]
+    B --> C[Send Messages]
+    C --> D[Rate Limiting]
+    D --> E[Success/Fail]
+    E --> C
+    end
+```
+
+## 📈 Message Throughput
+
+```mermaid
+%%{init: {'theme': 'dark'}}%%
+xychart-beta
+    title "Messages per Second"
+    x-axis [10, 50, 100, 500, 1000]
+    y-axis "Messages/s" 0 --> 50
+    line [45, 42, 40, 38, 35]
+    style line stroke:cyan,stroke-width:2
+```
 
 ## ✨ Features
 
@@ -14,16 +37,33 @@ A high-performance asynchronous NGL message spammer with a beautiful minimal UI.
 
 ## 📊 Performance Stats
 
-```
-Concurrent Requests | Messages/Second
--------------------|----------------
-       50          |      42
-      100          |      40
-      500          |      38
-     1000          |      35
+```mermaid
+%%{init: {'theme': 'dark'}}%%
+pie
+    title "Message Delivery Analysis"
+    "Success" : 95
+    "Failed" : 3
+    "Rate Limited" : 2
 ```
 
-![Concurrency Graph](https://quickchart.io/chart?c={type:'bar',data:{labels:['50','100','500','1000'],datasets:[{label:'Messages/Second',data:[42,40,38,35],backgroundColor:'rgba(75,192,192,0.5)',borderColor:'rgb(75,192,192)',borderWidth:1}]},options:{title:{display:true,text:'Concurrency Impact'},scales:{yAxes:[{scaleLabel:{display:true,labelString:'Messages/Second'}}],xAxes:[{scaleLabel:{display:true,labelString:'Concurrent Requests'}}]}}})
+## 🔥 Concurrency Impact
+
+```mermaid
+%%{init: {'theme': 'dark'}}%%
+gantt
+    title Concurrent Request Performance
+    dateFormat X
+    axisFormat %s
+    
+    section 50 Requests
+    42 msg/s: 0, 42
+    section 100 Requests
+    40 msg/s: 0, 40
+    section 500 Requests
+    38 msg/s: 0, 38
+    section 1000 Requests
+    35 msg/s: 0, 35
+```
 
 ## 🛠️ Installation
 
@@ -81,17 +121,18 @@ Mission Complete
 
 This tool is for educational purposes only. Use responsibly and in accordance with NGL's terms of service.
 
-## 📈 Success Rate Analysis
+## 🔧 Technical Architecture
 
-![Success Rate](https://quickchart.io/chart?c={type:'doughnut',data:{labels:['Success','Failed','Rate Limited'],datasets:[{data:[95,3,2],backgroundColor:['rgba(75,192,192,0.5)','rgba(255,99,132,0.5)','rgba(255,206,86,0.5)']}]},options:{title:{display:true,text:'Message Delivery Analysis'}}})
-
-## 🔧 Technical Details
-
-- Async/await architecture
-- Smart retry mechanism
-- Dynamic device ID generation
-- Rotating user agents
-- Real-time progress tracking
+```mermaid
+flowchart LR
+    A[User Input] --> B[Async Engine]
+    B --> C{Rate Limiter}
+    C -->|Pass| D[Message Sender]
+    C -->|Limit| E[Retry Handler]
+    E --> B
+    D --> F[Success]
+    D --> G[Fail]
+```
 
 ## 🤝 Contributing
 
